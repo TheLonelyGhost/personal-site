@@ -36,7 +36,7 @@ package = "netlify-plugin-checklinks"
 
   # Recurse through all the links and asset references on your page, starting
   # at the entrypoints
-  recursive = true
+  recursive = false
 
   pretty = true
 
