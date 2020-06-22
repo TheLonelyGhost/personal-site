@@ -66,9 +66,9 @@ As stated previously, it almost feels like I'm working with WordPress again. Tha
 
 Honestly, that’s about it. [SimpleNote][simplenote] allows me to seamlessly write from my desktop, my phone, or some random computer with an internet connection and a web browser.
 
-[simplenote]: https://www.simplenote.com/
+[simplenote]: https://simplenote.com/
 [notational-velocity]: https://en.wikipedia.org/wiki/Notational_Velocity
-[nvalt]: http://brettterpstra.com/projects/nvalt/
+[nvalt]: https://brettterpstra.com/projects/nvalt/
 [automattic]: https://automattic.com/
 [simplenote-automattic-syncing]: https://simplenote.com/2014/02/24/syncing-improvements-features/
 [symperium-syncing]: https://simplenote.com/2013/08/22/simplenote-relaunch/

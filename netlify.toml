@@ -31,7 +31,7 @@ package = "netlify-plugin-checklinks"
   # An array of glob patterns for pages on your site
   # Recursive traversal will start from these
   entryPoints = [
-    "*.html",
+    "index.html",
   ]
 
   # Recurse through all the links and asset references on your page, starting
@@ -41,9 +41,9 @@ package = "netlify-plugin-checklinks"
   pretty = true
 
   skipPatterns = []
-  todoPatterns = ["/index.xml"]
+  todoPatterns = ["*"]
 
-  checkExternal = false
+  checkExternal = true
   followSourceMaps = false
 
 [[plugins]]
