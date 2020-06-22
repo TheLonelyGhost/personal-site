@@ -39,16 +39,12 @@ unsafe = true
     url = "https://twitter.com/thelonelyghost"
 
   [[params.social]]
+    name = "mastodon"
+    url = "https://toot.cafe/@thelonelyghost"
+
+  [[params.social]]
     name = "linkedin"
     url = "https://www.linkedin.com/in/davidpaulalexander"
-
-  [[params.social]]
-    name = "github"
-    url = "https://github.com/thelonelyghost"
-
-  [[params.social]]
-    name = "gitlab"
-    url = "https://gitlab.com/thelonelyghost"
 
   [[params.social]]
     name = "email"
