@@ -14,7 +14,7 @@
 			<ul class="posts-list">
 				{{- range .Pages }}
 				<li class="post-item">
-          <a href="{{.Permalink}}">
+          <a href="{{.RelPermalink}}">
           <figure style="text-align: center">
             <img src="{{ .Params.featuredImg }}" alt="{{ .Summary }}" style="max-width: 30em;max-height: 20em" />
             <figcaption><h3 class="post-title">{{.Params.project}} by {{.Params.organization}}</h3></figcaption>
