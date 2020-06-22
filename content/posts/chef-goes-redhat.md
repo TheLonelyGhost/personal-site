@@ -1,7 +1,7 @@
 ---
 aliases:
   - /post/chef-goes-redhat.html
-title: 'Chef goes RedHat'
+title: Chef goes RedHat
 date: 2019-04-04T23:19:01
 tags: ['chef', 'devops', 'inspec', 'habitat']
 ---
@@ -53,7 +53,7 @@ A quick list of reported exceptions to the license requirements for binaries, th
 - Non-profit organizations
 - Open source contributors to the products that meet certain criteria
 
-[chef-commercial-license]: ''
+[chef-commercial-license]: #
 [chef-pricing]: https://www.chef.io/pricing/
 
 Starting with the following versions, the new EULA for this commercial license will be included:

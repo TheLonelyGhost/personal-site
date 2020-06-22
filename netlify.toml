@@ -1,9 +1,6 @@
 [build]
-  command = "hugo --gc --minify"
+  command = "hugo --gc --minify -b $URL"
   publish = "public"
-
-[build.processing]
-  skip_processing = true
 
 [context.production.environment]
   HUGO_VERSION = "0.72.0"
@@ -44,17 +41,15 @@ package = "netlify-plugin-checklinks"
   pretty = true
 
   skipPatterns = []
-  todoPatterns = []
+  todoPatterns = ["/index.xml"]
 
   checkExternal = false
   followSourceMaps = false
 
 [[plugins]]
-package = "netlify-plugin-a11y"
-
-  [plugin.inputs]
-  checkPaths = ['/']
-  resultMode = "warn"
-
-[[plugins]]
 package = "netlify-plugin-hugo-cache-resources"
+
+[[redirects]]
+  from = "/index.xml"
+  to = "/posts/index.xml"
+  status = 200

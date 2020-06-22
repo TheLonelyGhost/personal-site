@@ -1,7 +1,7 @@
-baseURL = "http://www.thelonelyghost.com/"
+baseURL = "https://www.thelonelyghost.com/"
 languageCode = "en-us"
 defaultContentLanguage = "en"
-title = "Implements Programmer"
+title = "David Alexander"
 theme = "hermit"
 
 enableGitInfo = true
@@ -26,14 +26,13 @@ unsafe = true
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04 -0700"
 
+  homeSubtitle = "An open source, full-stack developer, empowering users to take control of their data"
+
   themeColor = "#494f5c"
 
   footerCopyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 
   code_copy_button = false # Turn on/off the code-copy-button for code-fields
-
-  [params.author]
-    bio = "A public notebook, written by <strong>David Alexander</strong>, who lives and works in the Indianapolis area building useful things."
 
   [[params.social]]
     name = "twitter"
