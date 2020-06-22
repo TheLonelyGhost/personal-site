@@ -19,10 +19,10 @@
 [context.branch-deploy.environment]
   HUGO_VERSION = "0.72.0"
 
-[[headers]]
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
+# [[headers]]
+#   [headers.values]
+#     X-Frame-Options = "DENY"
+#     X-XSS-Protection = "1; mode=block"
 
 [[plugins]]
 package = "netlify-plugin-checklinks"
@@ -48,8 +48,3 @@ package = "netlify-plugin-checklinks"
 
 [[plugins]]
 package = "netlify-plugin-hugo-cache-resources"
-
-[[redirects]]
-  from = "/index.xml"
-  to = "/posts/index.xml"
-  status = 200
