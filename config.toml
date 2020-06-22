@@ -1,0 +1,71 @@
+baseURL = "http://www.thelonelyghost.com/"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "Implements Programmer"
+theme = "hermit"
+
+enableGitInfo = true
+
+pygmentsCodefences = true
+pygmentsUseClasses = true
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
+enableEmoji = true
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[author]
+  name = "David Alexander"
+
+[taxonomies]
+  tag = "tags"
+
+[params]
+  dateform        = "02 Jan 2006"
+  dateformShort   = "Jan 02"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+
+  themeColor = "#494f5c"
+
+  footerCopyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+
+  code_copy_button = false # Turn on/off the code-copy-button for code-fields
+
+  [params.author]
+    bio = "A public notebook, written by <strong>David Alexander</strong>, who lives and works in the Indianapolis area building useful things."
+
+  [[params.social]]
+    name = "twitter"
+    url = "https://twitter.com/thelonelyghost"
+
+  [[params.social]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/davidpaulalexander"
+
+  [[params.social]]
+    name = "github"
+    url = "https://github.com/thelonelyghost"
+
+  [[params.social]]
+    name = "gitlab"
+    url = "https://gitlab.com/thelonelyghost"
+
+  [[params.social]]
+    name = "email"
+    # Must be rot13 encoded
+    email = "qnivq@cbegsbyvb.gurybaryltubfg.pbz"
+
+[menu]
+
+  [[menu.main]]
+    name = "Notebook"
+    url = "posts/"
+
+  [[menu.main]]
+    name = "Portfolio"
+    url = "work/"
+
+  [[menu.main]]
+    name = "About"
+    url = "about/"

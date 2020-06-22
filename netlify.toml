@@ -1,0 +1,60 @@
+[build]
+  command = "hugo --gc --minify"
+  publish = "public"
+
+[build.processing]
+  skip_processing = true
+
+[context.production.environment]
+  HUGO_VERSION = "0.72.0"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+
+[context.deploy-preview]
+  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+
+[context.deploy-preview.environment]
+  HUGO_VERSION = "0.72.0"
+
+[context.branch-deploy]
+  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+  HUGO_VERSION = "0.72.0"
+
+[[headers]]
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+
+[[plugins]]
+package = "netlify-plugin-checklinks"
+
+  [plugins.inputs]
+  # An array of glob patterns for pages on your site
+  # Recursive traversal will start from these
+  entryPoints = [
+    "*.html",
+  ]
+
+  # Recurse through all the links and asset references on your page, starting
+  # at the entrypoints
+  recursive = true
+
+  pretty = true
+
+  skipPatterns = []
+  todoPatterns = []
+
+  checkExternal = false
+  followSourceMaps = false
+
+[[plugins]]
+package = "netlify-plugin-a11y"
+
+  [plugin.inputs]
+  checkPaths = ['/']
+  resultMode = "warn"
+
+[[plugins]]
+package = "netlify-plugin-hugo-cache-resources"
