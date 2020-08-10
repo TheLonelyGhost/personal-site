@@ -16,13 +16,12 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-versions: '0.74.3'
-          extended: true
+        run: |
+          mkdir ./bin
+          curl -SLo - https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_extended_0.74.3_Linux-64bit.tar.gz | tar xz -C ./bin
 
       - name: Build
-        run: hugo --minify -b 'https://www.thelonelyghost.com'
+        run: ./bin/hugo --debug --minify -b 'https://www.thelonelyghost.com'
 
       - name: Deploy
         uses: jsmrcaga/action-netlify-deploy@v1.1.0
