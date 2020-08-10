@@ -19,6 +19,7 @@ jobs:
         run: |
           mkdir ./bin
           curl -SLo - https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_extended_0.74.3_Linux-64bit.tar.gz | tar xz -C ./bin
+          ./bin/hugo version
 
       - name: Build
         run: ./bin/hugo --debug --minify -b 'https://www.thelonelyghost.com'
