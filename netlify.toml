@@ -41,8 +41,8 @@ package = "netlify-plugin-checklinks"
 
   pretty = true
 
-  skipPatterns = []
-  todoPatterns = ["*"]
+  skipPatterns = ["--tlg-homepage.netlify.app"]
+  todoPatterns = []
 
   checkExternal = true
   followSourceMaps = false
