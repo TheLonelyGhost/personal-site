@@ -24,7 +24,7 @@ As a programmer, I get it. Finding a unique, memorable key for someone to use as
 
 Okay, security aside. Let's assume I have multi-factor authentication on everything that uses the concerned email address. What else might be a problem?
 
-[gh-recruiter-email]: https://docs.github.com/en/github/site-policy/github-acceptable-use-policies#5-scraping-and-api-usage-restrictions
+[gh-recruiter-email]: https://docs.github.com/en/free-pro-team@latest/github/site-policy/github-acceptable-use-policies#5-information-usage-restrictions
 
 ## Reply-all
 
