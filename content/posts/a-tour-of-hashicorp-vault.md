@@ -11,4 +11,4 @@ Hashicorp Vault is the best-in-class secrets manager that many companies use. Ch
 
 > Vault is an identity translator
 
-Vault is an identity translator, shifting your existing authentication mechanisms (LDAP, OKTA, GitHub, AWS IAM) and facilitating access to other systems that may not natively support the same single-sign-on mechanisms (Postgres, SSH, encryption/decryption as a service)
+Vault is an identity translator, turning your existing shifting your existing authentication mechanisms (LDAP, OKTA, GitHub, AWS IAM) and facilitating access to other systems that may not natively support the same single-sign-on mechanisms (Postgres, SSH, encryption as a service)
