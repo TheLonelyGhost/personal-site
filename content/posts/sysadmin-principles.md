@@ -6,99 +6,60 @@ modified: 2021-04-14T23:55:13-04:00
 
 This seems to be a common topic of conversation, so I figure I should put it on paper (so to speak) what I value as a systems administrator, or "sysadmin."
 
-Principles:
-
 1. Keep it simple
 2. Ensure it can be reproduced
 3. Keep it close to stock
 4. Magic is bad
 5. No development tools on the server
 6. Prefer complexity at compile time over runtime
-7. Produce and consume artifacts
+7. Consume artifacts
 
-<!--
-Some common terminology I tend to use:
+What does this mean?
 
-<dl>
-<dt><a name="def-compile-time">Compile time</a></dt>
-<dd>For sysadmins, this means scripts that install and configure the given application. This is generally able to be sandboxed and tested more easily than <a href="#def-runtime">runtime</a>.</dd>
-<dt><a name="def-runtime">Runtime</a></dt>
-<dd>For sysadmins, this means operational stuff after a service and operating system have been configured. This is generally used in contrast with <a href="#def-compile-time">compile time</a>.</dd>
-<dt><a name="def-vcs">Version control system (VCS)</a></dt>
-<dd>A system typically built to track changes to plain text files such as source code. Examples of this are git, subversion, mercurial, and bazaar.</dd>
-<dt><a name="def-sdlc">Software development lifecycle (SDLC)</a></dt>
-<dd>The workflow that takes a bit of software from a half-baked idea in a persons brain all the way to full implementation and running in production. This involves the process of coding, testing, and deploying.</dd>
-</dl>
+## The fewer moving parts, the easier to diagnose
 
-[VCS]: #def-vcs
-[runtime]: #def-runtime
-[compile time]: #def-compile-time
-[SDLC]: #def-sdlc
+By keeping things simple, reproduceable, and close to their defaults, this sets a sysadmin up for success _when_ things go wrong. More so, by keeping things close to the default settings you maximize the chance that your setup overlaps someone else's and therefore might get more useful results from Stack Overflow or [that one forum post](https://xkcd.com/979/).
 
-## Principle 1: Keep it simple
+{{% tip title="TIP: Script it out" href="tip-script-it" %}}
 
-Simply put, fewer moving parts means fewer spots to check at runtime when something inevitably breaks. Similarly, less complexity means it is easier to keep the entire system in your head while troubleshooting.
-
-## Principle 2: Ensure it can be reproduced
-
-This means a few things:
-
-- Write a script for everything you do. Even the one-off tasks.
-- Test things in a sandbox whenever possible. Reset that sandbox to default state to ensure it works in a "clean room" setting before considering it finished.
-
-### Script it out
-
-{{% tip title="Tips:" %}}
+By scripting out everything you do, no matter how small, this ensures you can walk away mid-thought and pick up where you left off later.
 
 - Keep scripts in some central location to share with your team of sysadmins
-- [Version control systems][VCS] are best for iterating on these scripts
-- Make the [VCS] repo private, lest credentials are mistakenly hardcoded
+- Version control systems (VCS) are best for iterating on these scripts
+- Make the VCS repo private, lest credentials are mistakenly hardcoded
+
+Make your shell script _executable documentation_. Write it by defining your own shell functions describing each step you're taking.
 
 {{% /tip %}}
 
-Following this approach allows your teammates to benefit from your expertise, even if you're not present.
-
-{{% example %}}
-
-**Example:** Updating DNS in a manner consistent with how it was done before. Do I need to understand the fundamentals of DNS and networking? No, I just need to understand how to use your script.
-
-{{% /example %}}
-
-Another benefit is it allows you to walk away mid-thought, then come back later without having to rely on your memory to find where you left off.
-
-## Principle 3: Keep it close to stock
-
-By keeping the configuration close to the out-of-box configuration this maximizes the likelihood that a Stack Overflow answer or blog post or some other search result will apply to your current situation.
-
-If things need to deviate from stock settings, keep notes indicating the intent. Maybe these are comments inline. Maybe they're semantic commit messages in your [VCS]. Maybe it's some long-form document that is linked from one of those places. No matter the case, keep the reference or the content of the explained intent close to the source code for posterity.
-
-## Principle 4: Magic is bad
+##  Know your tools
 
 If you don't understand how a thing works, fix that. Learn about it. Pull back that abstraction layer and look under the hood.
 
-Why is magic bad? When it comes to troubleshooting, how can you be certain it isn't a bug in the magical tool's implementation? How can it logically be ruled-in/-out?
+Why is magic bad? When you're troubleshooting some error, how can you logically rule out the tool as a contributing factor?
 
-This principle does not preclude you from using the magical tool. It does mandate that you dispel the magical attribute of it and understand how it is implemented.
+This principle does not preclude you from using said magical tool, but it does mandate you dispel that magic by working to understand how it is implemented.
 
-## Principle 5: No development tools on the server
+## Compile time vs. runtime
 
-Development should never happen on a production-level system. If it does, your [SDLC] needs a serious overhaul.
+In the realm of systems administration, compile time and runtime retain their core meaning from the same phrases in programming, but they shift context a bit.
 
-## Principle 6: Prefer complexity at [compile time] over complexity at [runtime]
+Compile time can mean "the stuff you do to configure and setup a service, system, or application before it is immediately needed."
 
-Runtime is the most important spot where you need simplicity. Ideally the compile time should only happen once in the lifetime of that version of your application, server, container, or service.
+Runtime can mean the exact opposite, perhaps referring to necessary configurations created when a service starts by startup scripts. These are generally run at the last possible second before they're needed.
 
-Runtime will happen every time the service is started, requiring that cost of complexity to be paid immediately. Memory, CPU, and I/O bloat due to an approach that isn't strictly the bare essentials may cost resources every moment the application is running.
+The benefit of complexity at compile time is that you pay down that computational overhead exactly once. If at runtime, it would become a problem every time the application starts or, in some cases, continues to be a problem through the entire lifetime of the application's process(es).
 
-Better to pay a high cost once and be done with it than to continue paying it over and over again because it initially made things easier.
+Keep it simple.
 
-## Principle 7: Produce and consume artifacts
+## Artifacts are like gold
 
-Python packages are better than `git clone` of the repo. Golang binaries are preferred over cloning the source code and running `go build` on the server. Does this mean you shouldn't compile from source? Of course you can. Just don't do it on the server itself.
+Whether the application uses an interpreted language (e.g., python) or is statically compiled (e.g., golang), an artifact can be built to make rolling forward and reverting simple.
 
-If you're deploying artifacts, what purpose does your [VCS] have to exist on the server anymore? See Principle 5.
+In the case of python, a wheel (`my_pkg-0.1.0-py3-any.whl`) is a well-formed package holding the python source code. In a [venv], install it with `pip install ./my_pkg-0.1.1-py3-any.whl` to upgrade and `pip install ./my_pkg-0.1.0-py3-any.whl` to roll back.
 
-Deploying a new artifact is often easier than managing the source code changes between previous and desired versions of your application. Something went wrong? Install the old version of the artifact again.
+With golang it's even easier. Just drop the new binary in place and, if it doesn't work, drop the old binary in that spot instead.
 
-For golang binaries it means overwriting a single file with a different executable you likely still have kicking aroumd. For python, the package manager handles it. Running `pip install` again on the old `.whl` or `.tar.gz` archive will trigger that rollback.
--->
+Some VCS providers, like GitHub.com, allow uploading binaries and other assets related to a release to a location that can be accessed later, perhaps even by shell scripts.
+
+[venv]: https://docs.python.org/3/tutorial/venv.html
