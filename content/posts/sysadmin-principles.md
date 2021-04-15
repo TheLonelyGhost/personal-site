@@ -18,7 +18,7 @@ What does this mean?
 
 ## The fewer moving parts, the easier to diagnose
 
-By keeping things simple, reproduceable, and close to their defaults, this sets a sysadmin up for success _when_ things go wrong. More so, by keeping things close to the default settings you maximize the chance that your setup overlaps someone else's and therefore might get more useful results from Stack Overflow or [that one forum post](https://xkcd.com/979/).
+By keeping things simple, reproduceable, and close to their defaults, this sets a sysadmin up for success _when_ things go wrong. More so, by keeping things close to the default settings you maximize the chance that your setup overlaps someone else's. Bonus to finding info on Stack Overflow or [that one forum post](https://xkcd.com/979/)!
 
 {{% tip title="TIP: Script it out" href="tip-script-it" %}}
 
@@ -42,15 +42,30 @@ This principle does not preclude you from using said magical tool, but it does m
 
 ## Compile time vs. runtime
 
-In the realm of systems administration, compile time and runtime retain their core meaning from the same phrases in programming, but they shift context a bit.
+In a sysadmin context, compile time can mean "the stuff done to configure and setup a service, system, or application before it is immediately needed."
 
-Compile time can mean "the stuff you do to configure and setup a service, system, or application before it is immediately needed."
+In contrast, runtime means "stuff being done as the application is being put into its 'running' state."
 
-Runtime can mean the exact opposite, perhaps referring to necessary configurations created when a service starts by startup scripts. These are generally run at the last possible second before they're needed.
+{{% example title="Docker" %}}
 
-The benefit of complexity at compile time is that you pay down that computational overhead exactly once. If at runtime, it would become a problem every time the application starts or, in some cases, continues to be a problem through the entire lifetime of the application's process(es).
+Some container images contain a shell script as an entrypoint (e.g., `entrypoint.sh`). These shift some compile time tasks to execute at runtime, then defer to running the underlying application.
 
-Keep it simple.
+Reasons for this design might be:
+
+- More in-depth configuration changes required to pivot between environments
+- Rapid action may be required to change credentials, so they're only passed at runtime
+
+Actions taken in a `Dockerfile` when `docker build` is run are considered "compile time."
+
+Actions taken when running `docker exec`/`docker run` are considered "runtime."
+
+{{% /example %}}
+
+Complexity costs at compile time need only be paid down once: when things are being setup.
+
+If at runtime, cost of complexity is paid down every time the application is started.
+
+Keep it simple. Pay down the cost as soon as possible.
 
 ## Artifacts are like gold
 
