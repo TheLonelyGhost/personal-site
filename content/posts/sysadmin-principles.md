@@ -6,7 +6,18 @@ modified: 2021-04-14T23:55:13-04:00
 
 This seems to be a common topic of conversation, so I figure I should put it on paper (so to speak) what I value as a systems administrator, or "sysadmin."
 
-First, some common terminology I tend to use:
+Principles:
+
+1. Keep it simple
+2. Ensure it can be reproduced
+3. Keep it close to stock
+4. Magic is bad
+5. No development tools on the server
+6. Prefer complexity at compile time over runtime
+7. Produce and consume artifacts
+
+<!--
+Some common terminology I tend to use:
 
 <dl>
 <dt><a name="def-compile-time">Compile time</a></dt>
@@ -90,3 +101,4 @@ If you're deploying artifacts, what purpose does your [VCS] have to exist on the
 Deploying a new artifact is often easier than managing the source code changes between previous and desired versions of your application. Something went wrong? Install the old version of the artifact again.
 
 For golang binaries it means overwriting a single file with a different executable you likely still have kicking aroumd. For python, the package manager handles it. Running `pip install` again on the old `.whl` or `.tar.gz` archive will trigger that rollback.
+-->
