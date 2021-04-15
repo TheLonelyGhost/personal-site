@@ -1,8 +1,7 @@
 ---
-draft: true
 created: 2021-04-12T12:35:00-04:00
 title: 7 principles of a good sysadmin
-modified: 2021-04-14T23:48:45-04:00
+modified: 2021-04-14T23:55:13-04:00
 ---
 
 This seems to be a common topic of conversation, so I figure I should put it on paper (so to speak) what I value as a systems administrator, or "sysadmin."
@@ -25,11 +24,11 @@ First, some common terminology I tend to use:
 [compile time]: #def-compile-time
 [SDLC]: #def-sdlc
 
-## Principle #1: Keep it simple
+## Principle 1: Keep it simple
 
 Simply put, fewer moving parts means fewer spots to check at runtime when something inevitably breaks. Similarly, less complexity means it is easier to keep the entire system in your head while troubleshooting.
 
-## Principle #2: Ensure it can be reproduced
+## Principle 2: Ensure it can be reproduced
 
 This means a few things:
 
@@ -56,13 +55,13 @@ Following this approach allows your teammates to benefit from your expertise, ev
 
 Another benefit is it allows you to walk away mid-thought, then come back later without having to rely on your memory to find where you left off.
 
-## Principle #3: Keep it close to stock
+## Principle 3: Keep it close to stock
 
 By keeping the configuration close to the out-of-box configuration this maximizes the likelihood that a Stack Overflow answer or blog post or some other search result will apply to your current situation.
 
 If things need to deviate from stock settings, keep notes indicating the intent. Maybe these are comments inline. Maybe they're semantic commit messages in your [VCS]. Maybe it's some long-form document that is linked from one of those places. No matter the case, keep the reference or the content of the explained intent close to the source code for posterity.
 
-## Principle #4: Magic is bad
+## Principle 4: Magic is bad
 
 If you don't understand how a thing works, fix that. Learn about it. Pull back that abstraction layer and look under the hood.
 
@@ -70,11 +69,11 @@ Why is magic bad? When it comes to troubleshooting, how can you be certain it is
 
 This principle does not preclude you from using the magical tool. It does mandate that you dispel the magical attribute of it and understand how it is implemented.
 
-## Principle #5: No development tools on the server
+## Principle 5: No development tools on the server
 
 Development should never happen on a production-level system. If it does, your [SDLC] needs a serious overhaul.
 
-## Principle #6: Prefer complexity at [compile time] over complexity at [runtime]
+## Principle 6: Prefer complexity at [compile time] over complexity at [runtime]
 
 Runtime is the most important spot where you need simplicity. Ideally the compile time should only happen once in the lifetime of that version of your application, server, container, or service.
 
@@ -82,11 +81,11 @@ Runtime will happen every time the service is started, requiring that cost of co
 
 Better to pay a high cost once and be done with it than to continue paying it over and over again because it initially made things easier.
 
-## Principle #7: Produce and consume artifacts
+## Principle 7: Produce and consume artifacts
 
 Python packages are better than `git clone` of the repo. Golang binaries are preferred over cloning the source code and running `go build` on the server. Does this mean you shouldn't compile from source? Of course you can. Just don't do it on the server itself.
 
-If you're deploying artifacts, what purpose does your [VCS] have to exist on the server anymore? See Principle #5.
+If you're deploying artifacts, what purpose does your [VCS] have to exist on the server anymore? See Principle 5.
 
 Deploying a new artifact is often easier than managing the source code changes between previous and desired versions of your application. Something went wrong? Install the old version of the artifact again.
 
