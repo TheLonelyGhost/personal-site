@@ -18,6 +18,10 @@
 	{{ $style := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "css/style.css" . | toCSS | minify | fingerprint -}}
 	<link rel="stylesheet" href="{{ $style.RelPermalink }}" {{ printf "integrity=%q" $style.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous">
 	{{- block "head" . -}}{{- end }}
+	{{- if resources.Get "scss/custom.scss" }}
+	{{ $customStyle := resources.Get "scss/custom.scss" | resources.ExecuteAsTemplate "scss/custom.scss" . | toCSS | minify | fingerprint -}}
+	<link rel="stylesheet" href="{{ $customStyle.RelPermalink }}" {{ printf "integrity=%q" $customStyle.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous">
+	{{- end }}
 	{{- range .Site.Params.customCSS }}
 	<link rel="stylesheet" href="{{ . | relURL }}">
 	{{- end }}
