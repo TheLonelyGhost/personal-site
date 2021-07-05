@@ -18,7 +18,7 @@ Here's a quick overview:
 Let's break these down into more consumable pieces.
 
 [news-story]: https://blog.chef.io/chef-software-announces-the-enterprise-automation-stack
-[license-faq]: https://www.chef.io/subscription-model-faq
+[license-faq]: https://www.chef.io/pricing/subscription-model-faq
 
 ## Rebranding of products
 
