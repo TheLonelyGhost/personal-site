@@ -18,7 +18,7 @@ Here's a quick overview:
 Let's break these down into more consumable pieces.
 
 [news-story]: https://blog.chef.io/chef-software-announces-the-enterprise-automation-stack
-[license-faq]: https://www.chef.io/subscription-model-faq/
+[license-faq]: https://www.chef.io/subscription-model-faq
 
 ## Rebranding of products
 
@@ -54,7 +54,7 @@ A quick list of reported exceptions to the license requirements for binaries, th
 - Open source contributors to the products that meet certain criteria
 
 [chef-commercial-license]: #
-[chef-pricing]: https://www.chef.io/pricing/
+[chef-pricing]: https://www.chef.io/pricing
 
 Starting with the following versions, the new EULA for this commercial license will be included:
 

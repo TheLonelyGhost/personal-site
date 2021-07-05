@@ -6,7 +6,7 @@ date: 2019-03-05T23:10:31
 tags: ['devops', 'inspec']
 ---
 
-I've been using [InSpec](https://community.chef.io/products/chef-inspec/) for over 2 years now and have been writing automated tests for longer than that. What's the one thing that I've seen trip up the most people? Useless tests.
+I've been using [InSpec](https://community.chef.io/products/chef-inspec) for over 2 years now and have been writing automated tests for longer than that. What's the one thing that I've seen trip up the most people? Useless tests.
 
 InSpec as a project is based off of RSpec, a behavior driven testing framework. That isn't to say Gherkin like "Given _X_, When _Y_, I should see _Z_", but rather a more generic definition. RSpec promotes writing tests in a feature-oriented manner:
 
