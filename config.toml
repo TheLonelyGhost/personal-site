@@ -34,6 +34,9 @@ unsafe = true
 
   code_copy_button = false # Turn on/off the code-copy-button for code-fields
 
+  # webMentionUrl = "https://webmention.io/www.thelonelyghost.com/webmention"
+  # pingbackUrl = "https://webmention.io/www.thelonelyghost.com/xmlrpc"
+
   [[params.social]]
     name = "twitter"
     url = "https://twitter.com/thelonelyghost"
